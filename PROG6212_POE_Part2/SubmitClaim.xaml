@@ -1,0 +1,26 @@
+﻿<Window x:Class="PROG6212_POE_Part2.SubmitClaim"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_POE_Part2"
+        mc:Ignorable="d"
+        Title="Submit Claim" Height="250" Width="300">
+    <Grid>
+        <Label Content="Class Taught:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="147,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="No. of Lessons:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="147,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Hourly Rate:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="147,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Total Claim Amount" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="147,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="15,189,0,0" VerticalAlignment="Top" Width="58" Height="25"/>
+        <Button Content="Calculate" HorizontalAlignment="Left" Margin="105,189,0,0" VerticalAlignment="Top" Height="25" Width="57"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="195,189,0,0" VerticalAlignment="Top" Height="25" Width="49"/>
+
+    </Grid>
+</Window>

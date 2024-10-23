@@ -1,0 +1,16 @@
+﻿<Window x:Class="PROG6212_POE_Part2.LecturerDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_POE_Part2"
+        mc:Ignorable="d"
+            Title="LecturerDashboard" Height="400" Width="250">
+    <Grid>
+        <Button Content="Submit Claim" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
+        <Button Content="Upload Supporting Documents" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
+        <Button Content="View Claims" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
+        <Label Content="Claim Status" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

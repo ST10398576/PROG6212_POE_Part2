@@ -1,0 +1,33 @@
+﻿<Window x:Class="PROG6212_POE_Part2.CreateAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_POE_Part2"
+        mc:Ignorable="d"
+        Title="Create an Account" Height="450" Width="450">
+    <Grid>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="23,30,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserFirstName" HorizontalAlignment="Left" Margin="133,34,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserLastName" HorizontalAlignment="Left" Margin="133,66,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="23,97,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserEmail" HorizontalAlignment="Left" Margin="133,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="23,133,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserPhoneNumber" HorizontalAlignment="Left" Margin="133,137,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Faculty" HorizontalAlignment="Left" Margin="23,169,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserFaculty" HorizontalAlignment="Left" Margin="133,173,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="23,211,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="133,215,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="23,252,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserPassword" HorizontalAlignment="Left" Margin="133,256,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="23,292,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtConfirmUserPassword" HorizontalAlignment="Left" Margin="133,296,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Account Type" HorizontalAlignment="Left" Margin="23,335,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="PCoordinatorAManager" Content="Program Co-Ordinator/Academic Manager" HorizontalAlignment="Left" Margin="133,339,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Lecturer" Content="Lecturer" HorizontalAlignment="Left" Margin="133,359,0,0" VerticalAlignment="Top" />
+        <Button x:Name="CancelAccount" Content="Cancel" HorizontalAlignment="Left" Margin="133,390,0,0" VerticalAlignment="Top" Width="46" Click="CancelAccount_Click"/>
+        <Button  Content="Create Account" HorizontalAlignment="Left" Margin="190,389,0,0" VerticalAlignment="Top" Width="100" Click="CreateAccount_Click"/>
+        
+    </Grid>
+</Window>

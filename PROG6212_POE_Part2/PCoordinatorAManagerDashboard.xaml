@@ -1,0 +1,16 @@
+﻿<Window x:Class="PROG6212_POE_Part2.PCoordinatorAManagerDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6212_POE_Part2"
+        mc:Ignorable="d"
+        Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="400">
+    <Grid>
+        <Label Content="Claims to Verify" HorizontalAlignment="Left" Margin="37,28,0,0" VerticalAlignment="Top"/>
+        <Button Content="Deny Claim" HorizontalAlignment="Left" Margin="37,211,0,0" VerticalAlignment="Top" Height="30" Width="81"/>
+        <Button Content="Verify Claim" HorizontalAlignment="Left" Margin="137,211,0,0" VerticalAlignment="Top" Height="30" Width="83"/>
+        <Button Content="Approve Claim" HorizontalAlignment="Left" Margin="237,211,0,0" VerticalAlignment="Top" Height="30" Width="93"/>
+
+    </Grid>
+</Window>
