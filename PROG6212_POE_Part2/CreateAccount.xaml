@@ -24,10 +24,15 @@
         <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="23,292,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtConfirmUserPassword" HorizontalAlignment="Left" Margin="133,296,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Label Content="Account Type" HorizontalAlignment="Left" Margin="23,335,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="PCoordinatorAManager" Content="Program Co-Ordinator/Academic Manager" HorizontalAlignment="Left" Margin="133,339,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Lecturer" Content="Lecturer" HorizontalAlignment="Left" Margin="133,359,0,0" VerticalAlignment="Top" />
+
+        <ComboBox x:Name="AccountTypeComboBox" Width="120" Margin="133,339,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <ComboBoxItem Content="Lecturer" />
+            <ComboBoxItem Content="PCoordinatorAManager" />
+        </ComboBox>
+
+
         <Button x:Name="CancelAccount" Content="Cancel" HorizontalAlignment="Left" Margin="133,390,0,0" VerticalAlignment="Top" Width="46" Click="CancelAccount_Click"/>
         <Button  Content="Create Account" HorizontalAlignment="Left" Margin="190,389,0,0" VerticalAlignment="Top" Width="100" Click="CreateAccount_Click"/>
-        
+
     </Grid>
 </Window>

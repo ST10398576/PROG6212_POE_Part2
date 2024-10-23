@@ -33,14 +33,14 @@ namespace PROG6212_POE_Part2
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            string UserFirstName;
-            string UserLastName;
-            string UserEmail;
-            int UserPhoneNumber;
-            string UserFaculty;
-            string Username;
-            string UserPassword;
-            string AccountType;  
+            string UserFirstName = txtUserFirstName.Text;
+            string UserLastName = txtUserLastName.Text;
+            string UserEmail = txtUserEmail.Text;
+            int UserPhoneNumber = Convert.ToInt32(txtUserPhoneNumber.Text);
+            string UserFaculty = txtUserFaculty.Text;
+            string Username = txtUsername.Text;
+            string UserPassword = txtUserPassword.Text;
+            string AccountType = (AccountTypeComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();  
 
         }
     }
