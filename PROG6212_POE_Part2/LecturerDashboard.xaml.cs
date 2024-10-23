@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,16 @@ namespace PROG6212_POE_Part2
     /// </summary>
     public partial class LecturerDashboard : Window
     {
-        public LecturerDashboard()
+        public LecturerDashboard(string Username)
         {
             InitializeComponent();
         }
 
-        string dbConnection = @"Server=labg9aeb3\sqlexpress;Database=PROG6212_POE; Trusted_Connection=True";
+        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+
+        private void SubmitClaimButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

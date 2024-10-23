@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-        Title="Create an Account" Height="450" Width="450">
+        Title="Create an Account" Height="467" Width="450">
     <Grid>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="23,30,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserFirstName" HorizontalAlignment="Left" Margin="133,34,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserFirstName" HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Last Name" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserLastName" HorizontalAlignment="Left" Margin="133,66,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserLastName" HorizontalAlignment="Center" Margin="0,66,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="23,97,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserEmail" HorizontalAlignment="Left" Margin="133,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserEmail" HorizontalAlignment="Center" Margin="0,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Phone Number" HorizontalAlignment="Left" Margin="23,133,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserPhoneNumber" HorizontalAlignment="Left" Margin="133,137,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserPhoneNumber" HorizontalAlignment="Center" Margin="0,137,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Faculty" HorizontalAlignment="Left" Margin="23,169,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserFaculty" HorizontalAlignment="Left" Margin="133,173,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserFaculty" HorizontalAlignment="Center" Margin="0,173,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="23,211,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="133,215,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Margin="0,215,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="23,252,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUserPassword" HorizontalAlignment="Left" Margin="133,256,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUserPassword" HorizontalAlignment="Center" Margin="0,256,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="23,292,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtConfirmUserPassword" HorizontalAlignment="Left" Margin="133,296,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtConfirmUserPassword" HorizontalAlignment="Center" Margin="0,296,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Account Type" HorizontalAlignment="Left" Margin="23,335,0,0" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="AccountTypeComboBox" Width="120" Margin="133,339,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" >
+        <ComboBox x:Name="AccountTypeComboBox" Width="184" Margin="0,339,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" >
             <ComboBoxItem Content="Lecturer" />
             <ComboBoxItem Content="PCoordinatorAManager" />
         </ComboBox>

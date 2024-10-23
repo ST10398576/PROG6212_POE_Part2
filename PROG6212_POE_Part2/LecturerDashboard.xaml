@@ -7,9 +7,9 @@
         mc:Ignorable="d"
             Title="LecturerDashboard" Height="400" Width="250">
     <Grid>
-        <Button Content="Submit Claim" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
+        <Button x:Name="SubmitClaimButton" Content="Submit Claim" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Height="39" Width="195" Click="SubmitClaimButton_Click"/>
         <Button Content="Upload Supporting Documents" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
-        <Button Content="View Claims" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
+        <Button x:Name="ViewAllClaims" Content="View All Claims" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
         <Label Content="Claim Status" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
 
     </Grid>

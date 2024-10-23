@@ -27,7 +27,7 @@ namespace PROG6212_POE_Part2
             InitializeComponent();
         }
 
-        static string DBConn = @"Server=labg9aeb3\sqlexpress;Database=PROG6212_POE; Trusted_Connection=True";
+        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
@@ -36,14 +36,14 @@ namespace PROG6212_POE_Part2
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            string UserName = txtUsername.Text;
+            string Username = txtUsername.Text;
             string Password = txtPassword.Text;
 
-            if (UserName != null && Password != null)
+            if (Username != null || Password != null)
             {
                 using (SqlConnection conn = new SqlConnection(DBConn))
                 {
-                    string query = $"SELECT * FROM Account where Username={UserName} && UserPassword={Password} && AccountType='Lecturer'";
+                    string query = $"SELECT * FROM Account where Username={Username} && UserPassword={Password} && AccountType='Lecturer'";
 
                     // Open connection to database
                     conn.Open();
@@ -51,13 +51,13 @@ namespace PROG6212_POE_Part2
                     // Create command
                     using (SqlCommand command = new SqlCommand(query, conn))
                     {
-                        MessageBox.Show("Welcome " + UserName + "Role: Lecturer");
+                        LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
                     }
                 }
             }
             else 
-            { 
-            
+            {
+                UseAndPassBlock.Text = "Both The Username and Password and Must be filled in!";
             }
         }
     }
