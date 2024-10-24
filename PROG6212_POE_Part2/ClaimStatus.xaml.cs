@@ -19,12 +19,13 @@ namespace PROG6212_POE_Part2
     /// </summary>
     public partial class ClaimStatus : Window
     {
+        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+
         public ClaimStatus()
         {
             InitializeComponent();
             txtClaimStatusHeading.Content = $"Claim Status For Lecturer";
         }
 
-        string dbConnection = @"Server=labg9aeb3\sqlexpress;Database=PROG6212_POE; Trusted_Connection=True";
     }
 }

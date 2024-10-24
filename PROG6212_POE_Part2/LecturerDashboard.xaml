@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-            Title="LecturerDashboard" Height="400" Width="300">
+            Title="LecturerDashboard" Height="450" Width="300">
     <Grid HorizontalAlignment="Center" Width="300">
         <Button x:Name="btnSubmitClaim" Content="Submit Claim" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSubmitClaim_Click"/>
         <Button x:Name="btnSupportingDocs" Content="Upload Supporting Documents" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSupportingDocs_Click"/>
         <Button x:Name="btnViewClaims" Content="View Claims" HorizontalAlignment="Left" Margin="20,111,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnViewClaims_Click"/>
         <Label x:Name="txtClaimStatus" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="ClaimStatusListView" VerticalAlignment="Top" Margin="20,197,24,0" Height="164">
+        
+        <ListView x:Name="ClaimStatusListView" VerticalAlignment="Top" Margin="20,197,24,0" Height="20" SelectionChanged="ClaimStatusListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Class Taught" Width="85" DisplayMemberBinding="{Binding ClassTaught}"/>
@@ -20,6 +21,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button x:Name="btnReturn" Content="Return to Main Menu" HorizontalAlignment="Left" Margin="20,372,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnReturn_Click" />
 
     </Grid>
 </Window>

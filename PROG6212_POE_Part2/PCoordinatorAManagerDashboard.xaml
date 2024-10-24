@@ -8,6 +8,16 @@
         Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="400">
     <Grid>
         <Label Content="Claims to Verify" HorizontalAlignment="Left" Margin="37,28,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="ClaimsListView" VerticalAlignment="Top" Margin="20,59,26,0" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Class Taught" Width="150" DisplayMemberBinding="{Binding ClassTaught}"/>
+                    <GridViewColumn Header="Total Amount" Width="100" DisplayMemberBinding="{Binding TotalAmount}"/>
+                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding ClaimStatus}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <Button Content="Deny Claim" HorizontalAlignment="Left" Margin="37,211,0,0" VerticalAlignment="Top" Height="30" Width="81"/>
         <Button Content="Verify Claim" HorizontalAlignment="Left" Margin="137,211,0,0" VerticalAlignment="Top" Height="30" Width="83"/>
         <Button Content="Approve Claim" HorizontalAlignment="Left" Margin="237,211,0,0" VerticalAlignment="Top" Height="30" Width="93"/>

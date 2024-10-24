@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +22,15 @@ namespace PROG6212_POE_Part2
     /// </summary>
     public partial class LecturerDashboard : Window
     {
+        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+        
         public LecturerDashboard(string Username)
         {
             InitializeComponent();
-            
-            txtClaimStatus.Content = $" Claim Status of {Username}";
+            txtClaimStatus.Content = $"Claim Status of {Username}";
+            LoadClaimStatusViewer();
         }
 
-        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
 
         private void btnSubmitClaim_Click(object sender, RoutedEventArgs e)
         {
@@ -43,6 +46,28 @@ namespace PROG6212_POE_Part2
         private void btnViewClaims_Click(object sender, RoutedEventArgs e)
         {
             ClaimStatus claimStatus = new ClaimStatus();
+            claimStatus.Show();
+
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+        }
+
+        private void LoadClaimStatusViewer()
+        {
+            string query = "SELECT ClassTaught, TotalAmount, ClaimStatus FROM Claims"; // Adjust the query as necessary
+
+            using (SqlConnection connection = new SqlConnection(DBConn))
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                ClaimStatusListView.ItemsSource = dataTable.DefaultView; // Set the data source for the ListView
+            }
         }
     }
 }

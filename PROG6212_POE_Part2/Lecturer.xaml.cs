@@ -42,7 +42,7 @@ namespace PROG6212_POE_Part2
             // Validate that both fields are filled out
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(UserPassword))
             {
-                MessageBox.Show("Please enter both email and password.");
+                MessageBox.Show("Please enter both Username and Password.");
                 return;
             }
 
@@ -62,7 +62,7 @@ namespace PROG6212_POE_Part2
                     {
                         // Use SQL parameters to prevent SQL injection attacks
                         command.Parameters.AddWithValue("@Username", Username);
-                        command.Parameters.AddWithValue("@PasswordHash", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
+                        command.Parameters.AddWithValue("@UserPassword", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
 
                         // Execute the query and get the number of matching entries
                         int count = (int)command.ExecuteScalar();
@@ -75,12 +75,12 @@ namespace PROG6212_POE_Part2
                             // Open the Lecturer Dashboard window and close the login window
                             LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
                             lecturerDashboard.Show();
-                            this.Close();  // Close the login window
+                            Close();  // Close the login window
                         }
                         else
                         {
                             // No matching entries were found
-                            MessageBox.Show("Invalid email or password.");
+                            MessageBox.Show("Invalid Username or Password.");
                         }
                     }
                 }
