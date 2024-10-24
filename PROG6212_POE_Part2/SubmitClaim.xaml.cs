@@ -62,8 +62,8 @@ namespace PROG6212_POE_Part2
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            int ClassesTaught = Convert.ToInt32(txtLessonNum.Text) * Convert.ToInt32(txtHourlyRate.Text);
-            txtTotalClaimAmount.Text = $"R{ClassesTaught}"; 
+            decimal TotalAmount = Convert.ToInt32(txtLessonNum.Text) * Convert.ToDecimal(txtHourlyRate.Text);
+            txtTotalClaimAmount.Text = $"R{TotalAmount}"; 
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)

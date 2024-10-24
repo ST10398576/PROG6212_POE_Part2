@@ -55,7 +55,7 @@ namespace PROG6212_POE_Part2
                     connection.Open();
 
                     // SQL query to check if the email and password hash match an entry in the AccountUser table
-                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Lecturer';";
+                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Lecturer';"; 
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -72,7 +72,7 @@ namespace PROG6212_POE_Part2
                             MessageBox.Show("Lecturer logged in successfully.");
 
                             // Open the Lecturer Dashboard window and close the login window
-                            LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
+                            LecturerDashboard lecturerDashboard = new LecturerDashboard($"{Username}");
                             lecturerDashboard.Show();
                             this.Close();  // Close the login window
                         }

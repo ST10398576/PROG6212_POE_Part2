@@ -60,7 +60,7 @@ namespace PROG6212_POE_Part2
 
         private void LoadClaimStatusViewer()
         {
-            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims where AccountID=(Select AccountID from Account where Username = @Username)"; // Adjust the query as necessary
+            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims"; // Adjust the query as necessary
 
             using (SqlConnection connection = new SqlConnection(DBConn))
             {
