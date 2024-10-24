@@ -18,7 +18,6 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="" Content="Edit Claim" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Click="EditClaim_Click"/>
-        <Button  Content="Delete Claim" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Click="DeleteClaim_Click"/>
+
     </Grid>
 </Window>

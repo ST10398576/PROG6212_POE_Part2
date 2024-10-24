@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -49,7 +50,7 @@ namespace PROG6212_POE_Part2
                         StoreFileSecurely(file);
                     }
 
-                    UploadedFilesTextBlock.Text = string.Join(", ", uploadedFileNames);
+                    txtSupDoc.Text = string.Join(", ", uploadedFileNames);
                 }
             }
             catch (Exception ex)
@@ -97,9 +98,76 @@ namespace PROG6212_POE_Part2
             string ClaimClassTaught = txtClassTaughtNum.Text;
             string ClaimLessonNum = txtLessonNum.Text;
             string ClaimHourlyRate = txtHourlyRate.Text;
+            string ClaimTotalAmount = txtTotalClaimAmount.Text;
+            string ClaimSupDocs = txtSupDoc.Text;
+            string ClaimStatus = "Pending";
+
+            // Validate inputs
+            if (string.IsNullOrEmpty(ClaimHourlyRate) || string.IsNullOrEmpty(ClaimHourlyRate))
+            {
+                MessageBox.Show("Please fill in hours worked and hourly rate.");
+                return;
+            }
+
+            if (!int.TryParse(ClaimHourlyRate, out int HoursWorked) || !int.TryParse(ClaimHourlyRate, out int HourlyRate))
+            {
+                MessageBox.Show("Please enter valid numeric values for hours worked and hourly rate.");
+                return;
+            }
+
+            SubmitClaimToDatabase(ClaimClassTaught, HoursWorked, HourlyRate, ClaimTotalAmount, ClaimSupDocs, ClaimStatus);
 
         }
 
-        
+        private void SubmitClaimToDatabase(string ClaimClassTaught, int ClaimLessonNum, int ClaimHourlyRate, string ClaimTotalAmount, string ClaimSupDocs, string ClaimStatus)
+        {
+            if (!VerifyDatabaseConnection())
+            {
+                MessageBox.Show("Unable to connect to the database. Please check your connection settings.");
+                return;
+            }
+
+            string query = "INSERT INTO Claims (ClaimClassTaught, ClaimLessonNum, ClaimHourlyRate, ClaimTotalAmount, ClaimSupDocs, ClaimStatus) VALUES (@ClaimClassTaught, @ClaimLessonNum, @ClaimHourlyRate, @ClaimTotalAmount, @ClaimSupDocs, @ClaimStatus)";
+
+            using (SqlConnection conn = new SqlConnection(DBConn))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ClaimClassTaught", ClaimClassTaught);
+                cmd.Parameters.AddWithValue("@ClaimLessonNum", ClaimLessonNum);
+                cmd.Parameters.AddWithValue("@ClaimHourlyRate", ClaimHourlyRate);
+                cmd.Parameters.AddWithValue("@ClaimTotalAmount", ClaimTotalAmount);
+                cmd.Parameters.AddWithValue("@ClaimSupDocs", ClaimSupDocs);
+                cmd.Parameters.AddWithValue("@ClaimStatus", ClaimStatus);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Claim submitted successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while submitting the claim: {ex.Message}\n{ex.StackTrace}");
+                }
+            }
+        }
+
+        private bool VerifyDatabaseConnection()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBConn))
+                {
+                    conn.Open(); // Try to open the connection
+                    return true; // Connection is successful
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"Connection error: {sqlEx.Message}");
+                return false; // Connection failed
+            }
+        }
+
     }
 }
