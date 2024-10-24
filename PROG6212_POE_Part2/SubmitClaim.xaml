@@ -8,19 +8,22 @@
         Title="Submit Claim" Height="250" Width="300">
     <Grid>
         <Label Content="Class Taught:" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="147,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtClassTaughtNum" HorizontalAlignment="Left" Margin="147,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <Label Content="No. of Lessons:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="147,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtLessonNum" HorizontalAlignment="Left" Margin="147,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <Label Content="Hourly Rate:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="147,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtHourlyRate" HorizontalAlignment="Left" Margin="147,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Total Claim Amount" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="147,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="15,189,0,0" VerticalAlignment="Top" Width="58" Height="25"/>
-        <Button Content="Calculate" HorizontalAlignment="Left" Margin="105,189,0,0" VerticalAlignment="Top" Height="25" Width="57"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="195,189,0,0" VerticalAlignment="Top" Height="25" Width="49"/>
+        <Label Content="Total Claim Amount" HorizontalAlignment="Left" Margin="98,112,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBlock x:Name="txtTotalClaimAmount" HorizontalAlignment="Left" Margin="95,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
+        
+        
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="38,185,0,0" VerticalAlignment="Top" Width="58" Height="25" Click="btnCancel_Click"/>
+        <Button x:Name="btnCalculate" Content="Calculate" HorizontalAlignment="Left" Margin="128,185,0,0" VerticalAlignment="Top" Height="25" Width="57" Click="btnCalculate_Click"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="218,185,0,0" VerticalAlignment="Top" Height="25" Width="49" Click="btnSubmit_Click"/>
 
     </Grid>
 </Window>

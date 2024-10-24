@@ -25,5 +25,21 @@ namespace PROG6212_POE_Part2
         }
 
         string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            int ClassesTaught = Convert.ToInt32(txtLessonNum.Text) * Convert.ToInt32(txtHourlyRate.Text);
+            txtTotalClaimAmount.Text = $"{ClassesTaught}"; 
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

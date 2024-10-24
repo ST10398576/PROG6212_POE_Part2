@@ -31,6 +31,8 @@ namespace PROG6212_POE_Part2
         private void CancelAccount_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            MainWindow  main = new MainWindow();
+            main.Show();
         }
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
@@ -42,60 +44,71 @@ namespace PROG6212_POE_Part2
             string UserFaculty = txtUserFaculty.Text;
             string Username = txtUsername.Text;
             string UserPassword = txtUserPassword.Text;
-            string AccountType = (AccountTypeComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string UserConfirmPassword = txtConfirmUserPassword.Text;
+            string? AccountType = (AccountTypeComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
             if (string.IsNullOrWhiteSpace(UserFirstName) || string.IsNullOrWhiteSpace(UserLastName) || string.IsNullOrWhiteSpace(UserEmail) ||
                 string.IsNullOrWhiteSpace(UserPhoneNumber) || string.IsNullOrWhiteSpace(UserFaculty) || string.IsNullOrWhiteSpace(Username) || 
-                string.IsNullOrWhiteSpace(UserPassword) || string.IsNullOrWhiteSpace(AccountType))
+                string.IsNullOrWhiteSpace(UserPassword) || string.IsNullOrWhiteSpace(UserConfirmPassword) || string.IsNullOrWhiteSpace(AccountType))
             {
                 MessageBox.Show("Please fill out all fields.");
                 return;
             }
 
-            try
+            if ( UserConfirmPassword ==  UserPassword)
             {
-                // Address of SQL server and database 
-                string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
-
-                // Establish connection
-                using (SqlConnection con = new SqlConnection(DBConn))
+                try
                 {
-                    // Open Connection
-                    con.Open();
+                    // Address of SQL server and database 
+                    string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
 
-                    // SQL Query with all required fields, including email
-                    string query = "INSERT INTO AccountUser (UserFirstName, UserLastName, UserEmail, UserPhoneNumber, UserFaculty, Username, UserPassword, AccountType) " +
-                                   "VALUES (@UserFirstName, @UserLastName, @UserEmail, @UserPhoneNumber, @UserFaculty, @Username, @UserPassword  @AccountType)";
-
-                    // Execute query with parameters
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    // Establish connection
+                    using (SqlConnection con = new SqlConnection(DBConn))
                     {
-                        cmd.Parameters.AddWithValue("@UserFirstName", UserFirstName);
-                        cmd.Parameters.AddWithValue("@UserLastName", UserLastName);
-                        cmd.Parameters.AddWithValue("@UserEmail", UserEmail); 
-                        cmd.Parameters.AddWithValue("@UserPhoneNumber", UserPhoneNumber);
-                        cmd.Parameters.AddWithValue("@UserFaculty", UserFaculty);
-                        cmd.Parameters.AddWithValue("@Username", Username);
-                        cmd.Parameters.AddWithValue("@UserPassword", UserPassword);
-                        cmd.Parameters.AddWithValue("@AccountType", AccountType);
-                        cmd.ExecuteNonQuery();
+                        // Open Connection
+                        con.Open();
+
+                        // SQL Query with all required fields, including email
+                        string query = "INSERT INTO Account (UserFirstName, UserLastName, UserEmail, UserPhoneNumber, UserFaculty, Username, UserPassword, AccountType) " +
+                                       "VALUES (@UserFirstName, @UserLastName, @UserEmail, @UserPhoneNumber, @UserFaculty, @Username, @UserPassword, @AccountType)";
+
+                        // Execute query with parameters
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@UserFirstName", UserFirstName);
+                            cmd.Parameters.AddWithValue("@UserLastName", UserLastName);
+                            cmd.Parameters.AddWithValue("@UserEmail", UserEmail);
+                            cmd.Parameters.AddWithValue("@UserPhoneNumber", UserPhoneNumber);
+                            cmd.Parameters.AddWithValue("@UserFaculty", UserFaculty);
+                            cmd.Parameters.AddWithValue("@Username", Username);
+                            cmd.Parameters.AddWithValue("@UserPassword", UserPassword);
+                            cmd.Parameters.AddWithValue("@AccountType", AccountType);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Close Connection
+                        con.Close();
                     }
 
-                    // Close Connection
-                    con.Close();
+                    MessageBox.Show($"{AccountType} account successfully created.");
+                    Close();
+                    MainWindow main = new MainWindow();
+                    main.Show();
                 }
-
-                MessageBox.Show("Account successfully created.");
-                MainWindow main = new MainWindow();
-                main.Show();
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("Database error: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
             }
-            catch (SqlException sqlEx)
+            else 
             {
-                MessageBox.Show("Database error: " + sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("Please make sure the Password and Confirm Password Fields are the same.");
+                return;
             }
             
         }

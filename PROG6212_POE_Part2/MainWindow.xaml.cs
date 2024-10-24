@@ -24,20 +24,28 @@ namespace PROG6212_POE_Part2
 
         private void LecturerSignIn_Click(object sender, RoutedEventArgs e)
         {
+            Close();
             Lecturer lecturer = new Lecturer();
             lecturer.Show();
         }
 
         private void PCoordinatorAManagerSignIn_Click(object sender, RoutedEventArgs e)
         {
+            Close();
             ProgramCoOrdinator_AcademicManager programCoOrdinator_AcademicManager = new ProgramCoOrdinator_AcademicManager();
             programCoOrdinator_AcademicManager.Show();
         }
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
+            Close();
             CreateAccount createAccount = new CreateAccount();
             createAccount.Show();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

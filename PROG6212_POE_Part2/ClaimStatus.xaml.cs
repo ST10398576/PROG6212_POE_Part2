@@ -22,6 +22,7 @@ namespace PROG6212_POE_Part2
         public ClaimStatus()
         {
             InitializeComponent();
+            txtClaimStatusHeading.Content = $"Claim Status For Lecturer";
         }
 
         string dbConnection = @"Server=labg9aeb3\sqlexpress;Database=PROG6212_POE; Trusted_Connection=True";

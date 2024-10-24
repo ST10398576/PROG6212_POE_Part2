@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-            Title="LecturerDashboard" Height="400" Width="250">
-    <Grid>
-        <Button x:Name="SubmitClaimButton" Content="Submit Claim" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Height="39" Width="195" Click="SubmitClaimButton_Click"/>
-        <Button Content="Upload Supporting Documents" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
-        <Button x:Name="ViewAllClaims" Content="View All Claims" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Height="39" Width="195"/>
-        <Label Content="Claim Status" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
+            Title="LecturerDashboard" Height="400" Width="300">
+    <Grid HorizontalAlignment="Center" Width="300">
+        <Button x:Name="btnSubmitClaim" Content="Submit Claim" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSubmitClaim_Click"/>
+        <Button x:Name="btnSupportingDocs" Content="Upload Supporting Documents" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSupportingDocs_Click"/>
+        <Button x:Name="btnViewClaims" Content="View Claims" HorizontalAlignment="Left" Margin="20,111,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnViewClaims_Click"/>
+        <Label x:Name="txtClaimStatus" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="ClaimStatusListView" VerticalAlignment="Top" Margin="20,197,24,0" Height="164">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Class Taught" Width="85" DisplayMemberBinding="{Binding ClassTaught}"/>
+                    <GridViewColumn Header="Total Amount" Width="85" DisplayMemberBinding="{Binding TotalAmount}"/>
+                    <GridViewColumn Header="Claim Status" Width="80" DisplayMemberBinding="{Binding ClaimStatus}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

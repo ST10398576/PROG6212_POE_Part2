@@ -23,13 +23,26 @@ namespace PROG6212_POE_Part2
         public LecturerDashboard(string Username)
         {
             InitializeComponent();
+            
+            txtClaimStatus.Content = $" Claim Status of {Username}";
         }
 
         string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
 
-        private void SubmitClaimButton_Click(object sender, RoutedEventArgs e)
+        private void btnSubmitClaim_Click(object sender, RoutedEventArgs e)
+        {
+            SubmitClaim submitClaim = new SubmitClaim();
+            submitClaim.Show();
+        }
+
+        private void btnSupportingDocs_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnViewClaims_Click(object sender, RoutedEventArgs e)
+        {
+            ClaimStatus claimStatus = new ClaimStatus();
         }
     }
 }
