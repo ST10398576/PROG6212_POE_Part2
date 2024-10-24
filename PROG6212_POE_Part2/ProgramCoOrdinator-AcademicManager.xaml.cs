@@ -53,13 +53,13 @@ namespace PROG6212_POE_Part2
                     connection.Open();
 
                     // SQL query to check if the email and password hash match an entry in the AccountUser table
-                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'PCoordinatorAManager'";
+                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Programme Coordinator/Academic Manager';";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         // Use SQL parameters to prevent SQL injection attacks
                         command.Parameters.AddWithValue("@Username", Username);
-                        command.Parameters.AddWithValue("@PasswordHash", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
+                        command.Parameters.AddWithValue("@UserPassword", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
 
                         // Execute the query and get the number of matching entries
                         int count = (int)command.ExecuteScalar();

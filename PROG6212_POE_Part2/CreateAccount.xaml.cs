@@ -61,58 +61,63 @@ namespace PROG6212_POE_Part2
 
             if (UserConfirmPassword == UserPassword)
             {
+
+                try
+                {
+                    // Address of SQL server and database 
+                    string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+
+                    // Establish connection
+                    using (SqlConnection con = new SqlConnection(DBConn))
+                    {
+                        // Open Connection
+                        con.Open();
+
+                        // SQL Query with all required fields, including email
+                        string query = "INSERT INTO Account(UserFirstName, UserLastName, UserEmail, UserPhoneNumber, UserFaculty, Username, UserPassword, AccountType) " +
+                                        "VALUES (@UserFirstName, @UserLastName, @UserEmail, @UserPhoneNumber, @UserFaculty, @Username, @UserPassword, @AccountType)";
+
+                        // Execute query with parameters
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@UserFirstName", UserFirstName);
+                            cmd.Parameters.AddWithValue("@UserLastName", UserLastName);
+                            cmd.Parameters.AddWithValue("@UserEmail", UserEmail);
+                            cmd.Parameters.AddWithValue("@UserPhoneNumber", UserPhoneNumber);
+                            cmd.Parameters.AddWithValue("@UserFaculty", UserFaculty);
+                            cmd.Parameters.AddWithValue("@Username", Username);
+                            cmd.Parameters.AddWithValue("@UserPassword", UserPassword);
+                            cmd.Parameters.AddWithValue("@AccountType", AccountType);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Close Connection
+                        con.Close();
+                    }
+
+                    MessageBox.Show($"{AccountType} account successfully created.");
+                    Close();
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("Database error: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+            else
+            {
                 MessageBox.Show("Please make sure the Password and Confirm Password Fields are the same.");
                 return;
             }
-
-            try
-            {
-                // Address of SQL server and database 
-                string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
-
-                // Establish connection
-                using (SqlConnection con = new SqlConnection(DBConn))
-                {
-                    // Open Connection
-                    con.Open();
-
-                    // SQL Query with all required fields, including email
-                    string query = "INSERT INTO Account(UserFirstName, UserLastName, UserEmail, UserPhoneNumber, UserFaculty, Username, UserPassword, AccountType) " +
-                                    "VALUES (@UserFirstName, @UserLastName, @UserEmail, @UserPhoneNumber, @UserFaculty, @Username, @UserPassword, @AccountType)";
-
-                    // Execute query with parameters
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@UserFirstName", UserFirstName);
-                        cmd.Parameters.AddWithValue("@UserLastName", UserLastName);
-                        cmd.Parameters.AddWithValue("@UserEmail", UserEmail);
-                        cmd.Parameters.AddWithValue("@UserPhoneNumber", UserPhoneNumber);
-                        cmd.Parameters.AddWithValue("@UserFaculty", UserFaculty);
-                        cmd.Parameters.AddWithValue("@Username", Username);
-                        cmd.Parameters.AddWithValue("@UserPassword", UserPassword);
-                        cmd.Parameters.AddWithValue("@AccountType", AccountType);
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // Close Connection
-                    con.Close();
-                }
-
-                MessageBox.Show($"{AccountType} account successfully created.");
-                Close();
-                MainWindow main = new MainWindow();
-                main.Show();
-            }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show("Database error: " + sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            }
+            
+                
+        }
                 
         }
     }

@@ -27,6 +27,7 @@ namespace PROG6212_POE_Part2
         public LecturerDashboard(string Username)
         {
             InitializeComponent();
+            string LecturerUsername = Username;
             txtClaimStatus.Content = $"Claim Status of {Username}";
             LoadClaimStatusViewer();
         }
@@ -59,7 +60,7 @@ namespace PROG6212_POE_Part2
 
         private void LoadClaimStatusViewer()
         {
-            string query = "SELECT ClassTaught, TotalAmount, ClaimStatus FROM Claims"; // Adjust the query as necessary
+            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims where AccountID=(Select AccountID from Account where )"; // Adjust the query as necessary
 
             using (SqlConnection connection = new SqlConnection(DBConn))
             {
@@ -68,6 +69,12 @@ namespace PROG6212_POE_Part2
                 dataAdapter.Fill(dataTable);
                 ClaimStatusListView.ItemsSource = dataTable.DefaultView; // Set the data source for the ListView
             }
+        }
+
+        private void btnViewClaims_Click(object sender, RoutedEventArgs e)
+        {
+            ClaimStatus claimStatus = new ClaimStatus();
+            claimStatus.Show();
         }
     }
 }

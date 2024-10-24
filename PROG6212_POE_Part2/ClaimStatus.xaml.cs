@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,8 +26,60 @@ namespace PROG6212_POE_Part2
         public ClaimStatus()
         {
             InitializeComponent();
-            txtClaimStatusHeading.Content = $"Claim Status For Lecturer";
+            LoadClaims();
+            txtClaimStatusHeading.Content = $"Claim Status For Lecturer ";
         }
 
+        private void LoadClaims()
+        {
+            // Update the query to select the new fields
+            string query = "INSERT INTO Claims (ClaimClassTaught, ClaimLessonNum, ClaimHourlyRate, ClaimTotalAmount, ClaimSupDocs, ClaimStatus) VALUES (@ClaimClassTaught, @ClaimLessonNum, @ClaimHourlyRate, @ClaimTotalAmount, @ClaimSupDocs, @ClaimStatus)";
+
+            List<Claim> claims = new List<Claim>();
+            using (SqlConnection conn = new SqlConnection(DBConn))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        claims.Add(new Claim
+                        {
+                            ClaimID = reader.GetInt32(0),
+                            ClaimClassTaught = reader.GetString(1),
+                            ClaimLessonNum = reader.GetInt32(2),
+                            ClaimHourlyRate = reader.GetInt32(3),
+                            ClaimTotalAmount = reader.GetString(4),
+                            ClaimStatus = reader.GetString(5)
+                        });
+                    }
+
+                    // Check if claims list is empty
+                    if (claims.Count == 0)
+                    {
+                        MessageBox.Show("You have no claims submitted.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while loading claims: {ex.Message}");
+                }
+            }
+
+            ClaimsListView.ItemsSource = claims;
+        }
+        public class Claim
+        {
+            public int ClaimID { get; set; }
+            public string ClaimClassTaught { get; set; }
+            public int ClaimLessonNum { get; set; }
+            public int ClaimHourlyRate { get; set; }
+            public string ClaimTotalAmount { get; set; }
+            public string ClaimStatus { get; set; }
+        }
     }
 }

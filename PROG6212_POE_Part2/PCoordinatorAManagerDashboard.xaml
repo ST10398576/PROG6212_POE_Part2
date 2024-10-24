@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-        Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="400">
+        Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="500">
     <Grid>
-        <Label Content="Claims to Verify" HorizontalAlignment="Left" Margin="37,28,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="ClaimsListView" VerticalAlignment="Top" Margin="20,59,26,0" SelectionMode="Single">
+        <Label Content="Claims" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="ClaimsListView" Margin="10,40,10,87">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Class Taught" Width="150" DisplayMemberBinding="{Binding ClassTaught}"/>
-                    <GridViewColumn Header="Total Amount" Width="100" DisplayMemberBinding="{Binding TotalAmount}"/>
-                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding ClaimStatus}"/>
+                    <GridViewColumn Header="Claim ID" DisplayMemberBinding="{Binding ClaimID}" Width="100"/>
+                    <GridViewColumn Header="Class Taught" DisplayMemberBinding="{Binding ClaimClassTaught}" Width="150"/>
+                    <GridViewColumn Header="Hourly Rate" DisplayMemberBinding="{Binding ClaimHourlyRate}" Width="100"/>
+                    <GridViewColumn Header="Total Amount" DisplayMemberBinding="{Binding ClaimTotalAmount}" Width="100"/>
+                    <GridViewColumn Header="Claim Status" DisplayMemberBinding="{Binding ClaimStatus}" Width="125"/>
                 </GridView>
             </ListView.View>
         </ListView>

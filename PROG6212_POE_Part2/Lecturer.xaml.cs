@@ -32,6 +32,7 @@ namespace PROG6212_POE_Part2
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
             CreateAccount createAccount = new CreateAccount();
+            createAccount.Show();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
@@ -46,50 +47,54 @@ namespace PROG6212_POE_Part2
                 return;
             }
 
-            try
-            {
-                // SQL connection string to  database
-                string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
-
-                using (SqlConnection connection = new SqlConnection(DBConn))
+            
+                if(Username != null && UserPassword !=null )
                 {
-                    connection.Open();
-
-                    // SQL query to check if the email and password hash match an entry in the AccountUser table
-                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Lecturer'";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    try
                     {
-                        // Use SQL parameters to prevent SQL injection attacks
-                        command.Parameters.AddWithValue("@Username", Username);
-                        command.Parameters.AddWithValue("@UserPassword", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
+                        // SQL connection string to  database
+                        string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
 
-                        // Execute the query and get the number of matching entries
-                        int count = (int)command.ExecuteScalar();
-
-                        // Check if any entries were found
-                        if (count > 0)
+                        using (SqlConnection connection = new SqlConnection(DBConn))
                         {
-                            MessageBox.Show("Lecturer successfully logged in.");
+                            connection.Open();
 
-                            // Open the Lecturer Dashboard window and close the login window
-                            LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
-                            lecturerDashboard.Show();
-                            Close();  // Close the login window
-                        }
-                        else
-                        {
-                            // No matching entries were found
-                            MessageBox.Show("Invalid Username or Password.");
+                            // SQL query to check if the email and password hash match an entry in the AccountUser table
+                            string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Lecturer';";
+
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                // Use SQL parameters to prevent SQL injection attacks
+                                command.Parameters.AddWithValue("@Username", Username);
+                                command.Parameters.AddWithValue("@UserPassword", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
+
+                                // Execute the query and get the number of matching entries
+                                int count = (int)command.ExecuteScalar();
+
+                                // Check if any entries were found
+                                if (count > 0)
+                                {
+                                    MessageBox.Show("Lecturer successfully logged in.");
+                                    // Open the Lecturer Dashboard window and close the login window
+                                    LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
+                                    lecturerDashboard.Show();
+                                    Close();  // Close the login window
+                                }
+                                else
+                                {
+                                    // No matching entries were found
+                                    MessageBox.Show("Invalid Username or Password.");
+                                }
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions that occur during the process
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions that occur during the process
-                MessageBox.Show("Error: " + ex.Message);
-            }
+                
         }
     }
 }

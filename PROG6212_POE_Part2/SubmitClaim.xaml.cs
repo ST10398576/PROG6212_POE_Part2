@@ -45,11 +45,6 @@ namespace PROG6212_POE_Part2
 
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    foreach (string file in openFileDialog.FileNames)
-                    {
-                        StoreFileSecurely(file);
-                    }
-
                     txtSupDoc.Text = string.Join(", ", uploadedFileNames);
                 }
             }
@@ -57,28 +52,6 @@ namespace PROG6212_POE_Part2
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
-        }
-
-        private void StoreFileSecurely(string filePath)
-        {
-            // Define the directory to store the uploaded files
-            string directoryPath = "C:\\SecureUploads"; // Change this to your secure directory
-
-            // Ensure the directory exists
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            // Generate a unique file name to avoid conflicts
-            string fileName = Path.GetFileName(filePath);
-            string newFilePath = Path.Combine(directoryPath, Guid.NewGuid().ToString() + "_" + fileName);
-
-            // Copy the file to the secure directory
-            File.Copy(filePath, newFilePath, true); // true to overwrite if the file already exists
-
-            // Add the uploaded file name to the list
-            uploadedFileNames.Add(fileName);
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

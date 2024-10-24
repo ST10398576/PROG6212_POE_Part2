@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-            Title="LecturerDashboard" Height="450" Width="300">
-    <Grid HorizontalAlignment="Center" Width="300">
-        <Button x:Name="btnSubmitClaim" Content="Submit Claim" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSubmitClaim_Click"/>
-        <Button x:Name="btnSupportingDocs" Content="Upload Supporting Documents" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnSupportingDocs_Click"/>
-        <Button x:Name="btnViewClaims" Content="View Claims" HorizontalAlignment="Left" Margin="20,111,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnViewClaims_Click"/>
-        <Label x:Name="txtClaimStatus" HorizontalAlignment="Left" Margin="27,166,0,0" VerticalAlignment="Top"/>
-        
-        <ListView x:Name="ClaimStatusListView" VerticalAlignment="Top" Margin="20,197,24,0" Height="20" SelectionChanged="ClaimStatusListView_SelectionChanged">
+            Title="LecturerDashboard" Height="450" Width="500">
+    <Grid>
+        <Button x:Name="btnSubmitClaim" Content="Submit Claim" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Height="39" Width="396" Click="btnSubmitClaim_Click"/>
+        <Button x:Name="btnViewClaims" Content="View Claims" HorizontalAlignment="Center" Margin="0,95,0,0" VerticalAlignment="Top" Height="39" Width="396" Click="btnViewClaims_Click"/>
+        <Label x:Name="txtClaimStatus" HorizontalAlignment="Left" Margin="-19,179,0,0" VerticalAlignment="Top" Width="15"/>
+
+        <ListView x:Name="ClaimStatusListView" VerticalAlignment="Top" Margin="52,163,52,0" Height="189">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Class Taught" Width="85" DisplayMemberBinding="{Binding ClassTaught}"/>
-                    <GridViewColumn Header="Total Amount" Width="85" DisplayMemberBinding="{Binding TotalAmount}"/>
-                    <GridViewColumn Header="Claim Status" Width="80" DisplayMemberBinding="{Binding ClaimStatus}"/>
+                    <GridViewColumn Header="Claim ID" DisplayMemberBinding="{Binding ClaimId}" Width="50"/>
+                    <GridViewColumn Header="Class Taught" Width="100" DisplayMemberBinding="{Binding ClassTaught}"/>
+                    <GridViewColumn Header="Total Amount" Width="100" DisplayMemberBinding="{Binding TotalAmount}"/>
+                    <GridViewColumn Header="Claim Status" Width="150" DisplayMemberBinding="{Binding ClaimStatus}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button x:Name="btnReturn" Content="Return to Main Menu" HorizontalAlignment="Left" Margin="20,372,0,0" VerticalAlignment="Top" Height="39" Width="256" Click="btnReturn_Click" />
+        <Button x:Name="btnReturn" Content="Return to Main Menu" HorizontalAlignment="Center" Margin="0,375,0,0" VerticalAlignment="Top" Height="39" Width="396" Click="btnReturn_Click" />
 
     </Grid>
 </Window>
