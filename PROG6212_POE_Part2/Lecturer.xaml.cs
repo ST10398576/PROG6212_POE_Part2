@@ -18,7 +18,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace PROG6212_POE_Part2
 {
     /// <summary>
-    /// Interaction logic for Lecturer.xaml
+    /// Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git
     /// </summary>
     public partial class Lecturer : Window
     {

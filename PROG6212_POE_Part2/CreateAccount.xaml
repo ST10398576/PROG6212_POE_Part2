@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
         Title="Create an Account" Height="467" Width="450">
+    <!-- Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git-->
     <Grid>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="23,30,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtUserFirstName" HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>

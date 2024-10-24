@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
-            Title="LecturerDashboard" Height="450" Width="500">
+        Title="LecturerDashboard" Height="450" Width="500">
+    <!-- Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git-->
     <Grid>
         <Button x:Name="btnSubmitClaim" Content="Submit Claim" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Height="39" Width="396" Click="btnSubmitClaim_Click"/>
         <Button x:Name="btnViewClaims" Content="View Claims" HorizontalAlignment="Center" Margin="0,95,0,0" VerticalAlignment="Top" Height="39" Width="396" Click="btnViewClaims_Click"/>

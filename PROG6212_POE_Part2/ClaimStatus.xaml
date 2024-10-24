@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
         Title="ClaimStatus" Height="350" Width="600">
+    <!-- Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git-->
     <Grid>
         <Label x:Name="txtClaimStatusHeading" Content="Claim Status" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="ClaimsListView" Margin="10,40,10,10">

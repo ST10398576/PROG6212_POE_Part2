@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:PROG6212_POE_Part2"
         mc:Ignorable="d"
         Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="500">
+
+    <!-- Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git-->
     <Grid>
         <!--Once a Programme Coordinator is logged in this is the window they will be directed to, where they can approve, reject or leave claims pending-->
         <TextBlock Text="Claims" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,209"/>

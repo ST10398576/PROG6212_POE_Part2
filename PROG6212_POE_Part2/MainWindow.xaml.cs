@@ -11,9 +11,11 @@ using System.Windows.Shapes;
 
 namespace PROG6212_POE_Part2
 {
+
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git
     /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
