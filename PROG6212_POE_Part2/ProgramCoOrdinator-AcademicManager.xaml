@@ -8,10 +8,10 @@
         Title="Sign In(Program Co-Ordinator/Academic Manager)" Height="300" Width="338">
     <Grid>
         <Label Content="Username" HorizontalAlignment="Left" Margin="34,67,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="122,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <Label Content="Password" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="122,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
 
         <Button x:Name="CreateAccount" Content="Create an Account" HorizontalAlignment="Left" Margin="64,201,0,0" VerticalAlignment="Top" Click="CreateAccount_Click" />
         <Button x:Name="SignIn" Content="Sign-In" HorizontalAlignment="Left" Margin="182,201,0,0" VerticalAlignment="Top" Click="SignIn_Click"/>

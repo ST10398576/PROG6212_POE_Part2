@@ -24,12 +24,10 @@
         <Label Content="Confirm Password" HorizontalAlignment="Left" Margin="23,292,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtConfirmUserPassword" HorizontalAlignment="Center" Margin="0,296,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="184"/>
         <Label Content="Account Type" HorizontalAlignment="Left" Margin="23,335,0,0" VerticalAlignment="Top"/>
-
         <ComboBox x:Name="AccountTypeComboBox" Width="184" Margin="0,339,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" >
             <ComboBoxItem Content="Lecturer" />
             <ComboBoxItem Content="PCoordinatorAManager" />
         </ComboBox>
-
 
         <Button x:Name="CancelAccount" Content="Cancel" HorizontalAlignment="Left" Margin="133,390,0,0" VerticalAlignment="Top" Width="46" Click="CancelAccount_Click"/>
         <Button  Content="Create Account" HorizontalAlignment="Left" Margin="190,389,0,0" VerticalAlignment="Top" Width="100" Click="CreateAccount_Click"/>

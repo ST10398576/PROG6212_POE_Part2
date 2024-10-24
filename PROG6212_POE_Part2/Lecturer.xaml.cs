@@ -37,27 +37,58 @@ namespace PROG6212_POE_Part2
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             string Username = txtUsername.Text;
-            string Password = txtPassword.Text;
+            string UserPassword = txtPassword.Text;
 
-            if (Username != null || Password != null)
+            // Validate that both fields are filled out
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(UserPassword))
             {
-                using (SqlConnection conn = new SqlConnection(DBConn))
+                MessageBox.Show("Please enter both email and password.");
+                return;
+            }
+
+            try
+            {
+                // SQL connection string to  database
+                string DBConn = "Data Source=labg9aeb3\\sqlexpress;Initial Catalog=PROG6212_POE;Integrated Security=True;";
+
+                using (SqlConnection connection = new SqlConnection(DBConn))
                 {
-                    string query = $"SELECT * FROM Account where Username={Username} && UserPassword={Password} && AccountType='Lecturer'";
+                    connection.Open();
 
-                    // Open connection to database
-                    conn.Open();
+                    // SQL query to check if the email and password hash match an entry in the AccountUser table
+                    string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND UserPassword = @UserPassword AND AccountType = 'Lecturer'";
 
-                    // Create command
-                    using (SqlCommand command = new SqlCommand(query, conn))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
+                        // Use SQL parameters to prevent SQL injection attacks
+                        command.Parameters.AddWithValue("@Username", Username);
+                        command.Parameters.AddWithValue("@PasswordHash", UserPassword);  // Assuming password is stored as plain text (it should be hashed)
+
+                        // Execute the query and get the number of matching entries
+                        int count = (int)command.ExecuteScalar();
+
+                        // Check if any entries were found
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Lecturer successfully logged in.");
+
+                            // Open the Lecturer Dashboard window and close the login window
+                            LecturerDashboard lecturerDashboard = new LecturerDashboard(Username);
+                            lecturerDashboard.Show();
+                            this.Close();  // Close the login window
+                        }
+                        else
+                        {
+                            // No matching entries were found
+                            MessageBox.Show("Invalid email or password.");
+                        }
                     }
                 }
             }
-            else 
+            catch (Exception ex)
             {
-                UseAndPassBlock.Text = "Both The Username and Password and Must be filled in!";
+                // Handle any exceptions that occur during the process
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }
