@@ -7,22 +7,21 @@
         mc:Ignorable="d"
         Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="500">
     <Grid>
-        <Label Content="Claims" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="ClaimsListView" Margin="10,40,10,87">
+        <!--Once a Programme Coordinator is logged in this is the window they will be directed to, where they can approve, reject or leave claims pending-->
+        <TextBlock Text="Claims" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,209"/>
+
+        <ListView x:Name="ClaimsListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,80,20,60" SelectionMode="Single">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Claim ID" DisplayMemberBinding="{Binding ClaimID}" Width="100"/>
-                    <GridViewColumn Header="Class Taught" DisplayMemberBinding="{Binding ClaimClassTaught}" Width="150"/>
-                    <GridViewColumn Header="Hourly Rate" DisplayMemberBinding="{Binding ClaimHourlyRate}" Width="100"/>
-                    <GridViewColumn Header="Total Amount" DisplayMemberBinding="{Binding ClaimTotalAmount}" Width="100"/>
-                    <GridViewColumn Header="Claim Status" DisplayMemberBinding="{Binding ClaimStatus}" Width="125"/>
+                    <GridViewColumn Header="Class Taught" Width="200" DisplayMemberBinding="{Binding ClassTaught}"/>
+                    <GridViewColumn Header="Total Amount" Width="150" DisplayMemberBinding="{Binding TotalAmount}"/>
+                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding ClaimStatus}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button Content="Deny Claim" HorizontalAlignment="Left" Margin="37,211,0,0" VerticalAlignment="Top" Height="30" Width="81"/>
-        <Button Content="Verify Claim" HorizontalAlignment="Left" Margin="137,211,0,0" VerticalAlignment="Top" Height="30" Width="83"/>
-        <Button Content="Approve Claim" HorizontalAlignment="Left" Margin="237,211,0,0" VerticalAlignment="Top" Height="30" Width="93"/>
-
+        <Button Content="Approve" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="315,0,0,20" Click="ApproveButton_Click"/>
+        <Button Content="Reject" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120,0,0,20" Click="RejectButton_Click"/>
+        <Button Content="Pending" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="220,0,0,20" Click="PendingButton_Click"/>
     </Grid>
 </Window>

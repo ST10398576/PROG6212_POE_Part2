@@ -25,96 +25,114 @@ namespace PROG6212_POE_Part2
         public PCoordinatorAManagerDashboard()
         {
             InitializeComponent();
-            LoadPendingClaims();
+            LoadClaims();
         }
-
-        private void LoadPendingClaims()
+        // Method to load claims into the ListView
+        private void LoadClaims()
         {
-            List<Claim> pendingClaims = new List<Claim>();
-
-            // Load All pending claims
-            string query = "SELECT ClaimId, LecturerName, AdditionalNotes, Status FROM Claims";
+            List<Claim> claims = GetClaimsFromDatabase();
+            ClaimsListView.ItemsSource = claims;
+        }
+        //calls the claims and displays them in a listed view
+        private List<Claim> GetClaimsFromDatabase()
+        {
+            List<Claim> claims = new List<Claim>();
+            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims";
 
             using (SqlConnection connection = new SqlConnection(DBConn))
             {
+                SqlCommand command = new SqlCommand(query, connection);
+
                 try
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand(query, connection);
                     SqlDataReader reader = command.ExecuteReader();
-
                     while (reader.Read())
                     {
-                        Claim claim = new Claim
+                        claims.Add(new Claim
                         {
-                            ClaimId = reader.GetInt32(0),
-                            LecturerName = reader.GetString(1),
-                            AdditionalNotes = reader.GetString(2),
-                            Status = reader.GetString(3)
-
-                        };
-                        pendingClaims.Add(claim);
+                            ClaimID = reader.GetInt32(0),
+                            ClaimClassTaught = reader.GetString(1),
+                            ClaimTotalAmount = reader.GetDecimal(2),
+                            ClaimStatus = reader.GetString(3)
+                        });
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred while loading claims: {ex.Message}");
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
-
-            // Binding the list of claims to the ListView
-            ClaimListView.ItemsSource = pendingClaims;
+            return claims;
         }
-
-        private void Approve_Click(object sender, RoutedEventArgs e)
+        //updates the claims status based on coordinators decision
+        private void UpdateClaimStatus(int claimID, string newStatus)
         {
-            // Logic for approving the claim
-            if (ClaimListView.SelectedItem is Claim selectedClaim)
-            {
-                UpdateClaimStatus(selectedClaim.ClaimId, "Approved");
-            }
-        }
+            string query = "UPDATE Claims SET ClaimStatus = @ClaimStatus WHERE ClaimID = @ClaimID";
 
-        private void Reject_Click(object sender, RoutedEventArgs e)
-        {
-            // Logic for rejecting the claim
-            if (ClaimListView.SelectedItem is Claim selectedClaim)
-            {
-                UpdateClaimStatus(selectedClaim.ClaimId, "Rejected");
-            }
-        }
-
-        private void UpdateClaimStatus(int claimId, string status)
-        {
-            string query = "UPDATE Claims SET Status = @Status WHERE ClaimId = @ClaimId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConn))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Status", status);
-                command.Parameters.AddWithValue("@ClaimId", claimId);
+                command.Parameters.AddWithValue("@ClaimStatus", newStatus);
+                command.Parameters.AddWithValue("@ClaimID", claimID);
 
                 try
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    MessageBox.Show($"Claim {status} successfully.");
-                    LoadPendingClaims();  // Refresh the claim list
+                    MessageBox.Show("Claim status updated successfully!");
+                    LoadClaims(); // Reload claims after updating
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
-
-        private void ClaimListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //Approve button changes status of claims to approved
+        private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ClaimListView.SelectedItem is Claim selectedClaim)
+            if (ClaimsListView.SelectedItem is Claim selectedClaim)
             {
-                ClaimDetailsTextBox.Text = $"Lecturer: {selectedClaim.LecturerName}\n" +
-                                           $"Notes: {selectedClaim.AdditionalNotes}";
+                UpdateClaimStatus(selectedClaim.ClaimID, "Approved");
+            }
+            else
+            {
+                MessageBox.Show("Please select a claim to approve.");
+            }
+        }
+        //rejection button will change status to rejected
+        private void RejectButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ClaimsListView.SelectedItem is Claim selectedClaim)
+            {
+                UpdateClaimStatus(selectedClaim.ClaimID, "Rejected");
+            }
+            else
+            {
+                MessageBox.Show("Please select a claim to reject.");
+            }
+        }
+        //pending button will change status to pending
+        private void PendingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ClaimsListView.SelectedItem is Claim selectedClaim)
+            {
+                UpdateClaimStatus(selectedClaim.ClaimID, "Pending");
+            }
+            else
+            {
+                MessageBox.Show("Please select a claim to set as pending.");
             }
         }
     }
+
+    public class Claim
+    {
+        public int ClaimID { get; set; }
+        public string ClaimClassTaught { get; set; }
+        public decimal ClaimTotalAmount { get; set; }
+        public string ClaimStatus { get; set; }
+    }
 }
+

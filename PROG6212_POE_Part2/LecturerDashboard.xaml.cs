@@ -60,7 +60,7 @@ namespace PROG6212_POE_Part2
 
         private void LoadClaimStatusViewer()
         {
-            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims where AccountID=(Select AccountID from Account where )"; // Adjust the query as necessary
+            string query = "SELECT ClaimID, ClaimClassTaught, ClaimTotalAmount, ClaimStatus FROM Claims where AccountID=(Select AccountID from Account where Username = @Username)"; // Adjust the query as necessary
 
             using (SqlConnection connection = new SqlConnection(DBConn))
             {
@@ -71,10 +71,5 @@ namespace PROG6212_POE_Part2
             }
         }
 
-        private void btnViewClaims_Click(object sender, RoutedEventArgs e)
-        {
-            ClaimStatus claimStatus = new ClaimStatus();
-            claimStatus.Show();
-        }
     }
 }

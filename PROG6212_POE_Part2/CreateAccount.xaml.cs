@@ -41,8 +41,8 @@ namespace PROG6212_POE_Part2
             string UserPhoneNumber = Convert.ToString(txtUserPhoneNumber.Text);
             string UserFaculty = txtUserFaculty.Text;
             string Username = txtUsername.Text;
-            string UserPassword = txtUserPassword.Text;
-            string UserConfirmPassword = txtConfirmUserPassword.Text;
+            string UserPassword = txtUserPassword.Password;
+            string UserConfirmPassword = txtConfirmUserPassword.Password;
             string? AccountType = (AccountTypeComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
             if (string.IsNullOrWhiteSpace(UserFirstName) || string.IsNullOrWhiteSpace(UserLastName) || string.IsNullOrWhiteSpace(UserEmail) ||

@@ -34,7 +34,7 @@ namespace PROG6212_POE_Part2
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             string Username = txtUsername.Text;
-            string UserPassword = txtPassword.Text;
+            string UserPassword = txtPassword.Password;
 
             // Validate that both fields are filled out
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(UserPassword))
