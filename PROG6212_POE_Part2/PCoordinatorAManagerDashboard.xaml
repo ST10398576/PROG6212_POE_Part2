@@ -8,11 +8,11 @@
         Title="Program Co-Ordinator/Academic Manager Dashboard" Height="300" Width="500">
 
     <!-- Link to GitHub Repository: https://github.com/ST10398576/PROG6212_POE_Part2.git-->
-    <Grid>
+    <Grid Background="#D8DEE7">
         <!--Once a Programme Coordinator is logged in this is the window they will be directed to, where they can approve, reject or leave claims pending-->
         <TextBlock Text="Claims" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,209"/>
 
-        <ListView x:Name="ClaimsListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,80,20,60" SelectionMode="Single">
+        <ListView x:Name="ClaimsListView" VerticalAlignment="Top" Margin="20,80,20,0" SelectionMode="Single" Height="139">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Class Taught" Width="200" DisplayMemberBinding="{Binding ClassTaught}"/>
